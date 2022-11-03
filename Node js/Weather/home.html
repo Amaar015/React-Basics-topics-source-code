@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Document</title>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+                    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+                    <div class="box">
+                                        <div class="wave one"></div>
+                                        <div class="wave two"></div>
+                                        <div class="wave three"></div>
+                                   
+                           <div class="weathercon" id="weathercon">
+                                        <i class="fa-solid fa-sun" style="color: #eccc68;"></i>
+                                        
+                           </div>
+                           <div class="info" >
+                                        <h2 class="locaion" id="location"><i class="fa-solid fa-street-view" style="color: #fff;"></i>Jamshoro pak</h2>
+                                        <p class="date" id="date" >Tue|1 Nov|2022 | 9:10 AM</p>
+                                        <h1 class="temp" id="temp">26C</h1>
+                                        <h3 class="tempmin_max" id="tempmin-max">Min: 26 C | Max: 26 C</h3>
+                           </div>            
+                    </div>
+
+<script>
+    const currentDate=document.getElementById('date');
+    let weathercon =document.getElementById('weathercon');
+    const tempstatus='Clouds';
+
+    const getCurrentDay=()=>{
+
+          var weekday=new Array(7);
+          weekday[0]='Sun';
+          weekday[1]='Mon';
+          weekday[2]='Tue';
+          weekday[3]='Wed';
+          weekday[4]='thur';
+          weekday[5]='Fri';
+          weekday[6]='Sat';
+            
+          let currentTime=new Date();
+          
+         return weekday[currentTime.getDay()];
+    };
+       const getCurrentTime=()=>{
+              var months=[
+                     'Jan',
+                     'Feb',
+                     'Mar',
+                     'Apr',
+                     'May',
+                     'June',
+                     'Jul',
+                     'Aug',
+                     'Sept',
+                     'Oct',
+                     'Nov',
+                     'Dec',
+              ];
+              var now=new Date();
+              var month=months[now.getMonth()];
+              var day=now.getDate();
+
+              let hours=now.getHours();
+              let mins=now.getMinutes();
+              let periods='AM';
+              if(hours>11){
+                     periods='PM'
+                     if(hours>12) hours-=12;
+              }
+              if(mins<10){
+                     mins='0'+mins;
+              }
+              console.log(month);
+              console.log(day);
+              console.log(hours);
+              console.log(mins);
+              console.log(periods);
+              return `${month} ${day} | ${hours} : ${mins} ${periods}`;             // console.log(month+"/"+day);
+
+       }
+      currentDate.innerHTML=getCurrentDay() +" | "+getCurrentTime();
+
+
+</script>
+
+              </body> 
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- API link -->
+
+<!-- https://api.openweathermap.org/data/2.5/weather?q=jamshoro&appid=73a5f15e70f49a268b2a9a8b869cdd5d -->
